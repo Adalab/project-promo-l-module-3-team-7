@@ -2,17 +2,13 @@ import "../style/layout/_card-page.scss";
 import "../style/layout/_design.scss";
 import "../style/layout/_form.scss";
 import "../style/layout/_share.scss";
+import Collapsables from "./Collapsables.js";
 
 function Form() {
   return (
     <div className="collapsable-container">
       <section className="collapsable__wrap collapsable__design collapsable js-collapsable">
-        {/* <include
-          src="./collapsable-header.html"
-          collapsableIcon="fa-object-ungroup"
-          collapsableTitle=" Diseña"
-        ></include> */}
-
+        <Collapsables title="Diseña" icon="fa-object-ungroup"/>
         <div className="collapsable__content collapsable__content--design">
           <h3 className="design__title">colores</h3>
 
@@ -61,11 +57,7 @@ function Form() {
         </div>
       </section>
       <section className="colapsable_form collapsable js-collapsable collapsable--close">
-        {/* <include
-          src="./collapsable-header.html"
-          collapsableIcon="fa-keyboard-o"
-          collapsableTitle="Rellena"
-        ></include> */}
+        <Collapsables title="Rellena" icon="fa-keyboard-o"/>
         <div className="collapsable__content collapsable__content--form">
           <form className="form js-form" method="" action="">
             <label className="form__label" for="name">
@@ -164,11 +156,7 @@ function Form() {
         </div>
       </section>
       <section class="share collapsable js-collapsable collapsable--close">
-        {/* <include
-          src="./collapsable-header.html"
-          collapsableIcon="fa-share-alt"
-          collapsableTitle="Comparte"
-        ></include> */}
+        <Collapsables title="Comparte" icon="fa-share-alt"/>
         <div class="collapsable__content collapsable__content--share">
           <button class="button__create link_animation js-create-btn">
             <i class="fa fa-address-card-o" aria-hidden="true"></i>Crear tarjeta
