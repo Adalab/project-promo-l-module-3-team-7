@@ -2,13 +2,14 @@ import "../style/layout/_card-page.scss";
 import "../style/layout/_design.scss";
 import "../style/layout/_form.scss";
 import "../style/layout/_share.scss";
-import Collapsables from "./Collapsables.js";
+import Collapsable from "./Collapsable.js";
+import Input from "./Input.js";
 
 function Form() {
   return (
     <div className="collapsable-container">
       <section className="collapsable__wrap collapsable__design collapsable js-collapsable">
-        <Collapsables title="Diseña" icon="fa-object-ungroup"/>
+        <Collapsable title="Diseña" icon="fa-object-ungroup" />
         <div className="collapsable__content collapsable__content--design">
           <h3 className="design__title">colores</h3>
 
@@ -56,36 +57,15 @@ function Form() {
           </label>
         </div>
       </section>
-      <section className="colapsable_form collapsable js-collapsable collapsable--close">
-        <Collapsables title="Rellena" icon="fa-keyboard-o"/>
+      <section className="colapsable_form collapsable js-collapsable">
+        <Collapsable title="Rellena" icon="fa-keyboard-o" />
         <div className="collapsable__content collapsable__content--form">
           <form className="form js-form" method="" action="">
-            <label className="form__label" for="name">
-              Nombre completo
-            </label>
-            <input
-              className="form__input js-name js-input-text"
-              type="text"
-              name="name"
-              placeholder="Nombre completo"
-              required
-            />
-
-            <label className="form__label" for="job">
-              Puesto
-            </label>
-            <input
-              className="form__input js-job js-input-text"
-              type="text"
-              name="job"
-              id="job"
-              placeholder="Profesión"
-              required
-            />
-
+            <Input name="name" label="Nombre completo" placeholder="Nombre completo" />
+            <Input name="job" label="Puesto" placeholder="Profesión" />
             <div className="form__display--image">
               <div>
-                <label className="form__label js-label-image" for="photo">
+                <label className="form__label js-label-image" htmlFor="photo">
                   Imagen de perfil
                 </label>
                 <button
@@ -106,67 +86,28 @@ function Form() {
               </div>
               <div className="form__preview--image js__profile-preview"></div>
             </div>
-            <label className="form__label" for="email">
-              Email
-            </label>
-            <input
-              className="form__input js-email js-input-text"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="nombre.apellido@example.com"
-              required
-            />
+            <Input name="email" label="email" placeholder="nombre.apellido@example.com" type="email" />
+            <Input name="phone" label="Telefono" placeholder="+34 666666666" type="tel" />
 
-            <label className="form__label" for="phone">
-              Telefono
-            </label>
-            <input
-              className="form__input js-tel js-input-text"
-              type="tel"
-              name="phone"
-              id="phone"
-              placeholder="+34 666666666"
-            />
+            <Input name="linkedin" label="Linkedin" placeholder="Nombre de usuario de LinkedIn" />
+            <Input name="github" label="Github" placeholder="Nombre de usuario de GitHub" />
 
-            <label className="form__label" for="linkedin">
-              Linkedin
-            </label>
-            <input
-              className="form__input js-linkedin js-input-text"
-              type="url"
-              name="linkedin"
-              id="linkedin"
-              placeholder="Nombre de usuario de LinkedIn"
-              required
-            />
 
-            <label className="form__label" for="github">
-              Github
-            </label>
-            <input
-              className="form__input js-github js-input-text"
-              type="url"
-              name="github"
-              id="github"
-              placeholder="Nombre de usuario de GitHub"
-              required
-            />
           </form>
         </div>
       </section>
-      <section class="share collapsable js-collapsable collapsable--close">
-        <Collapsables title="Comparte" icon="fa-share-alt"/>
-        <div class="collapsable__content collapsable__content--share">
-          <button class="button__create link_animation js-create-btn">
-            <i class="fa fa-address-card-o" aria-hidden="true"></i>Crear tarjeta
+      <section className="share collapsable js-collapsable collapsable--close">
+        <Collapsable title="Comparte" icon="fa-share-alt" />
+        <div className="collapsable__content collapsable__content--share">
+          <button className="button__create link_animation js-create-btn">
+            <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear tarjeta
           </button>
 
-          <div class="confirm__share js-card-result share-hidden">
-            <p class="confirm__share--title">La tarjeta ha sido creada:</p>
-            <a class="confirm__share--link" href=""></a>
+          <div className="confirm__share js-card-result share-hidden">
+            <p className="confirm__share--title">La tarjeta ha sido creada:</p>
+            <a className="confirm__share--link" href=""></a>
           </div>
-          <div class="rectangle"></div>
+          <div className="rectangle"></div>
         </div>
       </section>
     </div>

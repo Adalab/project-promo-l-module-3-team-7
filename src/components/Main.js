@@ -4,10 +4,10 @@ import Preview from "./Preview";
 import "../style/layout/_card-page.scss";
 
 function Main() {
-    return (
+  return (
     <main className="main">
-      <Form />
       <Preview />
+      <Form />
     </main>
   );
 }
