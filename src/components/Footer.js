@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 //import "../style/App.scss";
 import React from "react";
-=======
 import logoAdalab from "../images/logo-adalab.png";
 import "../style/layout/Footer.scss";
 
->>>>>>> afe982573b86d884da5394eff55b52955abb4c31
 function Footer() {
     return (
       <footer className="footer">
