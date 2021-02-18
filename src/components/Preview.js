@@ -19,23 +19,12 @@ function Preview() {
             </div>
             <div className="card__image js__profile-image"></div>
             <div className="card__links--container">
-              <ul className="logo__list">
-                <Social />
-                <li className="logo__list--item js-logo-list hidden">
-                  <a
-                    className="link__card js-preview-linkedin"
-                    href=""
-                    title=""
-                  >
-                    <i className="fa fa-linkedin"></i>
-                  </a>
-                </li>
-                <li className="logo__list--item js-logo-list hidden">
-                  <a className="link__card js-preview-github" href="" title="">
-                    <i className="fa fa-github-alt"></i>
-                  </a>
-                </li>
-              </ul>
+              <ul class="logo__list">
+                <Social aClass="tel" iClass="mobile" />
+                <Social aClass="email" iClass="envelope-o" />
+                <Social aClass="linkedin" iClass="linkedin" />
+                <Social aClass="github" iClass="github-alt" />
+             </ul>
             </div>
           </div>
         </div>
