@@ -1,6 +1,7 @@
 //import "../style/App.scss";
 import Form from "./Form";
 import Preview from "./Preview";
+import "../style/layout/_card-page.scss";
 
 function Main() {
     return (
