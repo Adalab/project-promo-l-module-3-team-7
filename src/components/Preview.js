@@ -1,4 +1,5 @@
 import "../style/layout/Preview.scss";
+import Social from "./Social";
 
 function Preview() {
     return (
@@ -19,16 +20,7 @@ function Preview() {
             <div className="card__image js__profile-image"></div>
             <div className="card__links--container">
               <ul className="logo__list">
-                <li className="logo__list--item js-logo-list hidden">
-                  <a className="link__card js-preview-tel" title="">
-                    <i className="fa fa-mobile" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="logo__list--item js-logo-list hidden">
-                  <a className="link__card js-preview-email" href="" title="">
-                    <i className="fa fa-envelope-o"></i>
-                  </a>
-                </li>
+                <Social />
                 <li className="logo__list--item js-logo-list hidden">
                   <a
                     className="link__card js-preview-linkedin"
