@@ -8,23 +8,20 @@ import Input from "./Input.js";
 
 function Form() {
   return (
-    <div className="collapsable-container">
-      <section className="collapsable__wrap collapsable__design collapsable js-collapsable">
-        <Collapsable title="Diseña" icon="fa-object-ungroup" />
-        <div className="collapsable__content collapsable__content--design">
+    <form method="" action="" className="collapsable-container">
+      <fieldset className="collapsable__wrap collapsable__design collapsable js-collapsable">
+        <Collapsable title="Diseña" icon="fa-object-ungroup" fieldset="design">
           <h3 className="design__title">colores</h3>
           <Palette value="1" checked="true" />
-         
+
           <Palette value="2" />
-          
+
           <Palette value="3" />
-          
-        </div>
-      </section>
-      <section className="colapsable_form collapsable js-collapsable">
-        <Collapsable title="Rellena" icon="fa-keyboard-o" />
-        <div className="collapsable__content collapsable__content--form">
-          <form className="form js-form" method="" action="">
+        </Collapsable>
+      </fieldset>
+      <fieldset className="colapsable_form collapsable js-collapsable">
+        <Collapsable title="Rellena" icon="fa-keyboard-o" fieldset="form">
+          <div className="form js-form">
             <Input
               name="name"
               label="Nombre completo"
@@ -77,12 +74,11 @@ function Form() {
               label="Github"
               placeholder="Nombre de usuario de GitHub"
             />
-          </form>
-        </div>
-      </section>
-      <section className="share collapsable js-collapsable collapsable--close">
-        <Collapsable title="Comparte" icon="fa-share-alt" />
-        <div className="collapsable__content collapsable__content--share">
+          </div>
+        </Collapsable>
+      </fieldset>
+      <fieldset className="share collapsable js-collapsable collapsable--close">
+        <Collapsable title="Comparte" icon="fa-share-alt" fieldset="share">
           <button className="button__create link_animation js-create-btn">
             <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear
             tarjeta
@@ -93,9 +89,9 @@ function Form() {
             <a className="confirm__share--link" href=""></a>
           </div>
           <div className="rectangle"></div>
-        </div>
-      </section>
-    </div>
+        </Collapsable>
+      </fieldset>
+    </form>
   );
 }
 
