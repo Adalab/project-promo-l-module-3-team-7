@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Collapsable(props) {
-  const manageOpen = () => {
-    props.click();
+  let [isOpen, setOpen] = useState(true);
+  let [classClose, setClass] = useState("");
+  const handleLegendClick = () => {
+    setOpen(!isOpen);
+    setClass((classClose = isOpen ? "collapsable--close" : ""));
   };
+
   return (
-    <>
+    <fieldset
+      className={`collapsable__${props.fieldset} collapsable ${classClose} js-collapsable`}
+    >
       <legend
         className="collapsable__header js-collapsable-header"
-        onClick={manageOpen}
+        onClick={handleLegendClick}
       >
         <h2 className="tittle__collapsable">
           <i
@@ -24,7 +30,7 @@ function Collapsable(props) {
       >
         {props.children}
       </div>
-    </>
+    </fieldset>
   );
 }
 
