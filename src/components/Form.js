@@ -5,12 +5,29 @@ import "../style/layout/_share.scss";
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
 import Input from "./Input.js";
+import React, { useState } from "react";
 
 function Form() {
+  let [isOpen, setOpen] = useState(true);
+  let [classOpen, setClass] = useState("");
+  const handleLegendClick = () => {
+    setOpen(!isOpen);
+    console.log(isOpen);
+    // classOpen = isOpen ? "collapsable" : "";
+    setClass((classOpen = isOpen ? "collapsable--close" : ""));
+  };
+
   return (
     <form method="" action="" className="collapsable-container">
-      <fieldset className="collapsable__wrap collapsable__design collapsable js-collapsable">
-        <Collapsable title="Diseña" icon="fa-object-ungroup" fieldset="design">
+      <fieldset
+        className={`collapsable__wrap collapsable  ${classOpen} js-collapsable`}
+      >
+        <Collapsable
+          title="Diseña"
+          icon="fa-object-ungroup"
+          fieldset="design"
+          click={handleLegendClick}
+        >
           <h3 className="design__title">colores</h3>
           <Palette value="1" checked="true" />
 
@@ -19,8 +36,15 @@ function Form() {
           <Palette value="3" />
         </Collapsable>
       </fieldset>
-      <fieldset className="colapsable_form collapsable js-collapsable">
-        <Collapsable title="Rellena" icon="fa-keyboard-o" fieldset="form">
+      <fieldset
+        className={`colapsable_form collapsable js-collapsable ${classOpen}`}
+      >
+        <Collapsable
+          title="Rellena"
+          icon="fa-keyboard-o"
+          fieldset="form"
+          click={handleLegendClick}
+        >
           <div className="form js-form">
             <Input
               name="name"
@@ -77,8 +101,13 @@ function Form() {
           </div>
         </Collapsable>
       </fieldset>
-      <fieldset className="share collapsable js-collapsable collapsable--close">
-        <Collapsable title="Comparte" icon="fa-share-alt" fieldset="share">
+      <fieldset className={`share collapsable js-collapsable ${classOpen}`}>
+        <Collapsable
+          title="Comparte"
+          icon="fa-share-alt"
+          fieldset="share"
+          click={handleLegendClick}
+        >
           <button className="button__create link_animation js-create-btn">
             <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear
             tarjeta

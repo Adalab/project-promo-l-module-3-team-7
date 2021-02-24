@@ -1,9 +1,15 @@
 import React from "react";
 
 function Collapsable(props) {
+  const manageOpen = () => {
+    props.click();
+  };
   return (
     <>
-      <legend className="collapsable__header js-collapsable-header">
+      <legend
+        className="collapsable__header js-collapsable-header"
+        onClick={manageOpen}
+      >
         <h2 className="tittle__collapsable">
           <i
             className={"fa fa-collapsable " + props.icon}

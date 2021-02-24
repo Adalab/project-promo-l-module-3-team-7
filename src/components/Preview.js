@@ -19,7 +19,7 @@ function Preview() {
           </div>
           <div className="card__image js__profile-image"></div>
           <div className="card__links--container">
-            <ul class="logo__list">
+            <ul className="logo__list">
               <Social aClass="tel" iClass="mobile" />
               <Social aClass="email" iClass="envelope-o" />
               <Social aClass="linkedin" iClass="linkedin" />
