@@ -1,3 +1,56 @@
+<<<<<<< HEAD
+.collapsable__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  margin: 0 20px 0 20px;
+  cursor: pointer;
+}
+.fa-collapsable {
+  width: 16px;
+  height: 18px;
+  color: $color-icons;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  margin-right: 12px;
+}
+.tittle__collapsable {
+  text-transform: uppercase;
+  font-family: $font-second;
+  font-size: 18px;
+  color: $color-cards-text;
+  /*   margin-right: 140px; */
+}
+.fa-angle-up {
+  width: 16px;
+  height: 18px;
+  margin: 0 0 33px 0;
+  color: $color-cards-text;
+}
+.collapsable {
+  .collapsable__content {
+    max-height: 100vh;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+}
+
+.collapsable--close {
+  .fa-angle-up {
+    transform: rotate(180deg);
+  }
+
+  .collapsable__content {
+    max-height: 0;
+  }
+}
+=======
 .collapsable__header {
   width: 100%;
   display: flex;
@@ -49,3 +102,4 @@
     max-height: 0;
   }
 }
+>>>>>>> ab01dac06bd27fbb0a56dcd2aca28516a403f7a0
