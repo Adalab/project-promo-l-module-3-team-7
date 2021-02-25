@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 
 function Collapsable(props) {
-  // let [isClose, setClose] = useState(props.isClose);
-  // let [classClose, setClassClose] = useState(
-  //   isClose ? "collapsable--close" : ""
-  // );
+  // let [isOpen, setOpen] = useState(true);
+  // let [classClose, setClass] = useState("");
   // const handleLegendClick = () => {
-  //   setClose(!isClose);
-  //   setClassClose(isClose ? "collapsable--close" : "");
+  //   setOpen(!isOpen);
+  //   setClass((classClose = isOpen ? "collapsable--close" : ""));
   // };
 
+  let [isClose, setClose] = useState(props.isClose);
+  let [classClose, setClassClose] = useState(
+    isClose ? "collapsable--close" : ""
+  );
+  const handleLegendClick = () => {
+    console.log(isClose);
+    setClose(!isClose);
+    console.log(isClose);
+    setClassClose(isClose ? "" : "collapsable--close");
+    console.log(isClose);
+  };
+  console.log(isClose);
   return (
     <fieldset
       className={`collapsable__${props.fieldset} collapsable ${classClose} js-collapsable`}
@@ -37,3 +47,21 @@ function Collapsable(props) {
 }
 
 export default Collapsable;
+
+// let [isOpen, setOpen] = useState(true);
+//   let [classClose, setClass] = useState("");
+//   const handleLegendClick = () => {
+//     setOpen(!isOpen);
+//     setClass((classClose = isOpen ? "collapsable--close" : ""));
+//   };
+
+// CLOSE
+
+// let [isClose, setClose] = useState(true);
+//   let [classClose, setClassClose] = useState(
+//     isClose ? "collapsable--close" : ""
+//   );
+//   const handleLegendClick = () => {
+//     setClose(!isClose);
+//     setClassClose(isClose ? "collapsable--close" : "");
+//   };
