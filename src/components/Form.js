@@ -3,6 +3,7 @@ import "../style/layout/_design.scss";
 import "../style/layout/_form.scss";
 import "../style/layout/_share.scss";
 import Collapsable from "./Collapsable.js";
+import Palette from "./Palette.js";
 import Input from "./Input.js";
 
 function Form() {
@@ -12,49 +13,12 @@ function Form() {
         <Collapsable title="Diseña" icon="fa-object-ungroup" />
         <div className="collapsable__content collapsable__content--design">
           <h3 className="design__title">colores</h3>
-
-          <label className="display-block design__square-label">
-            <input
-              type="radio"
-              name="palette"
-              className="design__square-radio js_palette-select"
-              value="1"
-              checked
-            />
-            <ul className="palette-1-election">
-              <li className="design__square-color color-1">Color A</li>
-              <li className="design__square-color color-2">Color B</li>
-              <li className="design__square-color color-3">Color C</li>
-            </ul>
-          </label>
-
-          <label className="display-block design__square-label">
-            <input
-              type="radio"
-              name="palette"
-              value="2"
-              className="design__square-radio js_palette-select"
-            />
-            <ul className="palette-2-election">
-              <li className="design__square-color color-1">Color A</li>
-              <li className="design__square-color color-2">Color B</li>
-              <li className="design__square-color color-3">Color C</li>
-            </ul>
-          </label>
-
-          <label className="display-block design__square-label">
-            <input
-              type="radio"
-              name="palette"
-              value="3"
-              className="design__square-radio js_palette-select"
-            />
-            <ul className="palette-3-election">
-              <li className="design__square-color color-1">Color A</li>
-              <li className="design__square-color color-2">Color B</li>
-              <li className="design__square-color color-3">Color C</li>
-            </ul>
-          </label>
+          <Palette value="1" checked="true" />
+         
+          <Palette value="2" />
+          
+          <Palette value="3" />
+          
         </div>
       </section>
       <section className="colapsable_form collapsable js-collapsable">
