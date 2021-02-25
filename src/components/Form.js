@@ -61,7 +61,11 @@ function Form() {
         <Collapsable title="Rellena" icon="fa-keyboard-o" />
         <div className="collapsable__content collapsable__content--form">
           <form className="form js-form" method="" action="">
-            <Input name="name" label="Nombre completo" placeholder="Nombre completo" />
+            <Input
+              name="name"
+              label="Nombre completo"
+              placeholder="Nombre completo"
+            />
             <Input name="job" label="Puesto" placeholder="Profesión" />
             <div className="form__display--image">
               <div>
@@ -86,13 +90,29 @@ function Form() {
               </div>
               <div className="form__preview--image js__profile-preview"></div>
             </div>
-            <Input name="email" label="email" placeholder="nombre.apellido@example.com" type="email" />
-            <Input name="phone" label="Telefono" placeholder="+34 666666666" type="tel" />
+            <Input
+              name="email"
+              label="email"
+              placeholder="nombre.apellido@example.com"
+              type="email"
+            />
+            <Input
+              name="phone"
+              label="Telefono"
+              placeholder="+34 666666666"
+              type="tel"
+            />
 
-            <Input name="linkedin" label="Linkedin" placeholder="Nombre de usuario de LinkedIn" />
-            <Input name="github" label="Github" placeholder="Nombre de usuario de GitHub" />
-
-
+            <Input
+              name="linkedin"
+              label="Linkedin"
+              placeholder="Nombre de usuario de LinkedIn"
+            />
+            <Input
+              name="github"
+              label="Github"
+              placeholder="Nombre de usuario de GitHub"
+            />
           </form>
         </div>
       </section>
@@ -100,7 +120,8 @@ function Form() {
         <Collapsable title="Comparte" icon="fa-share-alt" />
         <div className="collapsable__content collapsable__content--share">
           <button className="button__create link_animation js-create-btn">
-            <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear tarjeta
+            <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear
+            tarjeta
           </button>
 
           <div className="confirm__share js-card-result share-hidden">
