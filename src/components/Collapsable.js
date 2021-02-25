@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
 function Collapsable(props) {
-  let [isOpen, setOpen] = useState(true);
-  let [classClose, setClass] = useState("");
-  const handleLegendClick = () => {
-    setOpen(!isOpen);
-    setClass((classClose = isOpen ? "collapsable--close" : ""));
-  };
+  // let [isClose, setClose] = useState(props.isClose);
+  // let [classClose, setClassClose] = useState(
+  //   isClose ? "collapsable--close" : ""
+  // );
+  // const handleLegendClick = () => {
+  //   setClose(!isClose);
+  //   setClassClose(isClose ? "collapsable--close" : "");
+  // };
 
   return (
     <fieldset

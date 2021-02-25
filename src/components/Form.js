@@ -9,7 +9,12 @@ import Input from "./Input.js";
 function Form() {
   return (
     <form method="" action="" className="collapsable-container">
-      <Collapsable title="Diseña" icon="fa-object-ungroup" fieldset="design">
+      <Collapsable
+        title="Diseña"
+        icon="fa-object-ungroup"
+        fieldset="design"
+        isClose={false}
+      >
         <h3 className="design__title">colores</h3>
         <Palette value="1" checked="true" />
 
@@ -17,7 +22,12 @@ function Form() {
 
         <Palette value="3" />
       </Collapsable>
-      <Collapsable title="Rellena" icon="fa-keyboard-o" fieldset="form">
+      <Collapsable
+        title="Rellena"
+        icon="fa-keyboard-o"
+        fieldset="form"
+        isClose={true}
+      >
         <div className="form js-form">
           <Input
             name="name"
@@ -73,7 +83,12 @@ function Form() {
           />
         </div>
       </Collapsable>
-      <Collapsable title="Comparte" icon="fa-share-alt" fieldset="share">
+      <Collapsable
+        title="Comparte"
+        icon="fa-share-alt"
+        fieldset="share"
+        isClose={true}
+      >
         <button className="button__create link_animation js-create-btn">
           <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear
           tarjeta
