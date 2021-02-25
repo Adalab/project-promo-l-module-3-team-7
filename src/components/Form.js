@@ -6,16 +6,28 @@ import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
 import Input from "./Input.js";
 
-function Form() {
+function Form(props) {
   return (
     <form method="" action="" className="collapsable-container">
       <Collapsable title="Diseña" icon="fa-object-ungroup" fieldset="design">
         <h3 className="design__title">colores</h3>
-        <Palette value="1" checked="true" />
+        <Palette
+          value="1"
+          selectedPalette={props.selectedPalette}
+          changePalette={props.changePalette}
+        />
 
-        <Palette value="2" />
+        <Palette
+          value="2"
+          selectedPalette={props.selectedPalette}
+          changePalette={props.changePalette}
+        />
 
-        <Palette value="3" />
+        <Palette
+          value="3"
+          selectedPalette={props.selectedPalette}
+          changePalette={props.changePalette}
+        />
       </Collapsable>
       <Collapsable title="Rellena" icon="fa-keyboard-o" fieldset="form">
         <div className="form js-form">
