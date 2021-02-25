@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "../core/variables";
 @import "../core/reset";
 
@@ -89,3 +90,96 @@
     background-color: $color-palette-3-color-3;
   }
 }
+=======
+@import "../core/variables";
+@import "../core/reset";
+
+.collapsable__design {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px 0 20px;
+  @media all and (min-width: 768px) {
+    margin: 0;
+  }
+}
+.collapsable__content--design {
+  width: 100%;
+  margin-left: 39px;
+  margin-right: 40px;
+  margin-bottom: 15px;
+  @media all and (min-width: 768px) {
+    margin: 0;
+  }
+}
+.design__title {
+  text-transform: uppercase;
+  text-align: left;
+  font-family: $font-second;
+  font-size: 18px;
+  letter-spacing: normal;
+  color: $color-cards-text;
+}
+.design__square {
+  &-label {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &-radio {
+    margin-right: 8px;
+  }
+
+  &-color {
+    display: inline-block;
+    width: 30px;
+    height: 25px;
+    overflow: hidden;
+    color: rgba($color: $color-line, $alpha: 0);
+  }
+}
+
+.palette-1-election,
+.palette-2-election,
+.palette-3-election {
+  display: flex;
+  margin-bottom: 5px;
+}
+.palette-1-election {
+  .color-1 {
+    background-color: $color-palette-1-color-1;
+  }
+  .color-2 {
+    background-color: $color-palette-1-color-2;
+  }
+  .color-3 {
+    background-color: $color-palette-1-color-3;
+  }
+}
+
+.palette-2-election {
+  .color-1 {
+    background-color: $color-palette-2-color-1;
+  }
+  .color-2 {
+    background-color: $color-palette-2-color-2;
+  }
+  .color-3 {
+    background-color: $color-palette-2-color-3;
+  }
+}
+
+.palette-3-election {
+  .color-1 {
+    background-color: $color-palette-3-color-1;
+  }
+  .color-2 {
+    background-color: $color-palette-3-color-2;
+  }
+  .color-3 {
+    background-color: $color-palette-3-color-3;
+  }
+}
+>>>>>>> ab01dac06bd27fbb0a56dcd2aca28516a403f7a0
