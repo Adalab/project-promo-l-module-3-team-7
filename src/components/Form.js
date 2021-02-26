@@ -5,7 +5,6 @@ import '../style/layout/_share.scss';
 import Collapsable from './Collapsable.js';
 import Palette from './Palette.js';
 import Input from './Input.js';
-import React, { useState } from 'react';
 
 function Form(props) {
   return (
@@ -23,12 +22,14 @@ function Form(props) {
             label='Nombre completo'
             placeholder='Nombre completo'
             value={props.name}
+            handleInput={props.handleInput}
           />
           <Input
             name='job'
             label='Puesto'
             placeholder='Profesión'
             value={props.job}
+            handleInput={props.handleInput}
           />
           <div className='form__display--image'>
             <div>
@@ -58,7 +59,8 @@ function Form(props) {
             label='email'
             placeholder='nombre.apellido@example.com'
             type='email'
-            value='email'
+            value={props.email}
+            handleInput={props.handleInput}
           />
           <Input
             name='phone'
@@ -66,6 +68,7 @@ function Form(props) {
             placeholder='+34 666666666'
             type='tel'
             value={props.tel}
+            handleInput={props.handleInput}
           />
 
           <Input
@@ -73,12 +76,14 @@ function Form(props) {
             label='Linkedin'
             placeholder='Nombre de usuario de LinkedIn'
             value={props.linkedin}
+            handleInput={props.handleInput}
           />
           <Input
             name='github'
             label='Github'
             placeholder='Nombre de usuario de GitHub'
             value={props.github}
+            handleInput={props.handleInput}
           />
         </div>
       </Collapsable>

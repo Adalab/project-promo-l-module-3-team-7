@@ -2,29 +2,8 @@ import React, { useState } from 'react';
 import '../style/layout/_form.scss';
 
 function Input(props) {
-  const [name, setName] = useState('');
-  const [job, setJob] = useState('');
-  const [email, setEmail] = useState('');
-  const [tel, setTel] = useState('');
-  const [linkedin, setLinkedin] = useState('');
-  const [github, setGithub] = useState('');
-
-  const handleChange = (ev) => {
-    console.log(`me han clicado`);
-    const field = ev.target.name;
-    if (field === 'name') {
-      setName(ev.target.value);
-    } else if (field === 'job') {
-      setJob(ev.target.value);
-    } else if (field === 'email') {
-      setEmail(ev.target.value);
-    } else if (field === 'tel') {
-      setTel(ev.target.value);
-    } else if (field === 'linkedin') {
-      setLinkedin(ev.target.value);
-    } else if (field === 'github') {
-      setGithub(ev.target.value);
-    }
+  const handleInputChange = (ev) => {
+    props.handleInput(ev);
   };
 
   return (
@@ -39,7 +18,7 @@ function Input(props) {
         id={props.name}
         placeholder={props.placeholder}
         value={props.email}
-        onChange={handleChange}
+        onChange={handleInputChange}
         required
       />
     </>
