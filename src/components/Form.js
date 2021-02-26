@@ -5,6 +5,7 @@ import "../style/layout/_share.scss";
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
 import Input from "./Input.js";
+import ImageBtn from "./ImageBtn";
 import React, { useState } from "react";
 
 function Form() {
@@ -17,8 +18,13 @@ function Form() {
     setClass((classOpen = isOpen ? "collapsable--close" : ""));
   };
 
+  const defaultForm = ev => {
+    ev.preventDefault();
+  }
+  
+ 
   return (
-    <form method="" action="" className="collapsable-container">
+    <form method="" action="" className="collapsable-container" onSubmit={defaultForm}>
       <fieldset
         className={`collapsable__wrap collapsable  ${classOpen} js-collapsable`}
       >
@@ -52,29 +58,7 @@ function Form() {
               placeholder="Nombre completo"
             />
             <Input name="job" label="Puesto" placeholder="Profesión" />
-            <div className="form__display--image">
-              <div>
-                <label className="form__label js-label-image" htmlFor="photo">
-                  Imagen de perfil
-                </label>
-                <button
-                  className="btn__submit--image js__profile-trigger"
-                  type="submit"
-                  value="Anadir imagen"
-                  name="photo"
-                  id="photo"
-                  required
-                >
-                  Añadir imagen
-                </button>
-                <input
-                  type="file"
-                  name=""
-                  className="btn__submit--image action__hiddenField js__profile-upload-btn"
-                />
-              </div>
-              <div className="form__preview--image js__profile-preview"></div>
-            </div>
+            <ImageBtn />
             <Input
               name="email"
               label="email"
