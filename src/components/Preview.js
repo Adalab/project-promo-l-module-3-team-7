@@ -1,14 +1,16 @@
 import "../style/layout/Preview.scss";
 import Social from "./Social";
 
-function Preview() {
+function Preview(props) {
   return (
     <section className="section__card">
       <div className="section__container">
         <button className="reset js-reset">
           <i className="fa fa-trash"></i>Reset
         </button>
-        <div className="card palette3card js_preview-card">
+        <div
+          className={`card palette3card js_preview-card palette-${props.selectedPalette}`}
+        >
           <div className="card__titles">
             <h3 className="card__titles--name js-preview-name">
               Nombre apellidos
