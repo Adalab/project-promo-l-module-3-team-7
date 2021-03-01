@@ -2,9 +2,10 @@
 import Form from "./Form";
 import Preview from "./Preview";
 import "../style/layout/_card-page.scss";
+import defaultImage from "../images/lee.jpg"
 import React, { useState } from "react";
 
-function Main() {
+function Main(props) {
   const [selectedPalette, setSelectedPalette] = useState("1");
   const [name, setName] = useState("Nombre apellidos");
   const [job, setJob] = useState("Programadora front end");
@@ -12,6 +13,8 @@ function Main() {
   const [tel, setTel] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
+  const [isAvatarDefault, setIsAvatarDefault] = useState(true);
+  const [profile, setProfile] = useState({avatar:defaultImage});
 
   const handleChangePalette = (ev) => {
     const newValue = ev.currentTarget.value;
@@ -37,6 +40,11 @@ function Main() {
     }
   }
 
+  function updateAvatar(img) {
+    setProfile({ avatar: img });
+    setIsAvatarDefault(false);
+  }
+
   return (
     <main className="main">
       <Preview
@@ -47,11 +55,15 @@ function Main() {
         linkedin={linkedin}
         github={github}
         selectedPalette={selectedPalette}
+        avatar={profile.avatar}
       />
       <Form
         handleInput={handleInput}
         selectedPalette={selectedPalette}
         changePalette={handleChangePalette}
+        avatar={profile.avatar} 
+        updateAvatar={updateAvatar}
+        isAvatarDefault={isAvatarDefault} 
       />
     </main>
   );
