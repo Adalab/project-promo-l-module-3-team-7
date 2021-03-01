@@ -5,15 +5,23 @@ import '../style/layout/_card-page.scss';
 import React, { useState } from 'react';
 
 function Main() {
+
+  const [selectedPalette, setSelectedPalette] = useState("1");
   const [name, setName] = useState('Nombre apellidos');
-  const [job, setJob] = useState('Programadora front end');
+  const [job, setJob] = useState('Programadora front end')
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [github, setGithub] = useState('');
 
-  function handleInput(ev) {
-    const field = ev.target.name;
+  const handleChangePalette = (ev) => {
+    const newValue = ev.currentTarget.value;
+
+    setSelectedPalette(newValue);
+
+    function handleInput(ev) {
+      const field = ev.target.name;
+    };
 
     if (field === 'name') {
       console.log(ev.target.value);
@@ -40,8 +48,10 @@ function Main() {
         tel={tel}
         linkedin={linkedin}
         github={github}
+        selectedPalette={selectedPalette}
       />
-      <Form handleInput={handleInput} />
+      <Form handleInput={handleInput} selectedPalette={selectedPalette}
+        changePalette={handleChangePalette} />
     </main>
   );
 }
