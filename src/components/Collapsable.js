@@ -13,23 +13,32 @@ function Collapsable(props) {
     isClose ? "collapsable--close" : ""
   );
   const handleLegendClick = () => {
-    console.log(isClose);
     setClose(!isClose);
-    console.log(isClose);
     setClassClose(isClose ? "" : "collapsable--close");
-    console.log(isClose);
   };
-  console.log(isClose);
+
   return (
-    <fieldset className={`collapsable__${props.fieldset} collapsable ${classClose} js-collapsable`}>
-      <legend className='collapsable__header js-collapsable-header' onClick={handleLegendClick}>
-        <h2 className='tittle__collapsable'>
-          <i className={"fa fa-collapsable " + props.icon} aria-hidden='true'></i>
+    <fieldset
+      className={`collapsable__${props.fieldset} collapsable ${classClose} js-collapsable`}
+    >
+      <legend
+        className="collapsable__header js-collapsable-header"
+        onClick={handleLegendClick}
+      >
+        <h2 className="tittle__collapsable">
+          <i
+            className={"fa fa-collapsable " + props.icon}
+            aria-hidden="true"
+          ></i>
           {props.title}
         </h2>
-        <i className='fa fa-angle-up' aria-hidden='true'></i>
+        <i className="fa fa-angle-up" aria-hidden="true"></i>
       </legend>
-      <div className={`collapsable__content collapsable__content--${props.fieldset}`}>{props.children}</div>
+      <div
+        className={`collapsable__content collapsable__content--${props.fieldset}`}
+      >
+        {props.children}
+      </div>
     </fieldset>
   );
 }

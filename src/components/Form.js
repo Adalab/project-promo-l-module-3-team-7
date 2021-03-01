@@ -2,11 +2,45 @@ import "../style/layout/_card-page.scss";
 import "../style/layout/_design.scss";
 import "../style/layout/_form.scss";
 import "../style/layout/_share.scss";
+
+// import { fetchCard } from "../services/Api.js";
+import React, { useState } from "react";
+
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
 import Input from "./Input.js";
 
 function Form(props) {
+  const [message, setMessage] = useState("");
+  const [cardURL, setcardURL] = useState("");
+  const [hiddenClass, setHiddenClass] = useState("share-hidden");
+
+  const handleCreateBtn = (ev) => {
+    ev.preventDefault();
+
+    const url = "https://awesome-profile-cards.herokuapp.com/card";
+    const userData = props.getUserData();
+    console.log(userData);
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success === true) {
+          setMessage("La tarjeta ha sido creada:");
+          setcardURL(data.cardURL);
+        } else {
+          setMessage(data.error);
+          setcardURL("");
+        }
+        setHiddenClass("");
+      });
+  };
+
   return (
     <form method="" action="" className="collapsable-container">
       <Collapsable
@@ -91,7 +125,7 @@ function Form(props) {
             label="Telefono"
             placeholder="+34 666666666"
             type="tel"
-            value={props.tel}
+            value={props.phone}
             handleInput={props.handleInput}
           />
 
@@ -117,14 +151,18 @@ function Form(props) {
         fieldset="share"
         isClose={true}
       >
-        <button className="button__create link_animation js-create-btn">
+        <button
+          className="button__create link_animation js-create-btn"
+          onClick={handleCreateBtn}
+        >
           <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear
           tarjeta
         </button>
 
-        <div className="confirm__share js-card-result share-hidden">
-          <p className="confirm__share--title">La tarjeta ha sido creada:</p>
-          <a className="confirm__share--link" href=""></a>
+        <div className={`confirm__share js-card-result ${hiddenClass}`}>
+          <p className="confirm__share--title">{message}</p>
+          {/* <p className="confirm__share--title">La tarjeta ha sido creada:</p> */}
+          <a className="confirm__share--link" href={cardURL}></a>
         </div>
         <div className="rectangle"></div>
       </Collapsable>
