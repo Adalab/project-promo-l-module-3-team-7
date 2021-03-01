@@ -5,11 +5,10 @@ import "../style/layout/_share.scss";
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
 import Input from "./Input.js";
-<<<<<<< HEAD
 import ImageBtn from "./ImageBtn";
 import React, { useState } from "react";
 
-function Form() {
+function Form(props) {
   let [isOpen, setOpen] = useState(true);
   let [classOpen, setClass] = useState("");
   const handleLegendClick = () => {
@@ -28,17 +27,6 @@ function Form() {
     <form method="" action="" className="collapsable-container" onSubmit={defaultForm}>
       <fieldset
         className={`collapsable__wrap collapsable  ${classOpen} js-collapsable`}
-=======
-
-function Form(props) {
-  return (
-    <form method="" action="" className="collapsable-container">
-      <Collapsable
-        title="Diseña"
-        icon="fa-object-ungroup"
-        fieldset="design"
-        isClose={false}
->>>>>>> dev
       >
         <h3 className="design__title">colores</h3>
         <Palette
@@ -58,52 +46,13 @@ function Form(props) {
           selectedPalette={props.selectedPalette}
           changePalette={props.changePalette}
         />
-      </Collapsable>
+      </fieldset>
       <Collapsable
         title="Rellena"
         icon="fa-keyboard-o"
         fieldset="form"
         isClose={true}
       >
-<<<<<<< HEAD
-        <Collapsable
-          title="Rellena"
-          icon="fa-keyboard-o"
-          fieldset="form"
-          click={handleLegendClick}
-        >
-          <div className="form js-form">
-            <Input
-              name="name"
-              label="Nombre completo"
-              placeholder="Nombre completo"
-            />
-            <Input name="job" label="Puesto" placeholder="Profesión" />
-            <ImageBtn />
-            <Input
-              name="email"
-              label="email"
-              placeholder="nombre.apellido@example.com"
-              type="email"
-            />
-            <Input
-              name="phone"
-              label="Telefono"
-              placeholder="+34 666666666"
-              type="tel"
-            />
-
-            <Input
-              name="linkedin"
-              label="Linkedin"
-              placeholder="Nombre de usuario de LinkedIn"
-            />
-            <Input
-              name="github"
-              label="Github"
-              placeholder="Nombre de usuario de GitHub"
-            />
-=======
         <div className="form js-form">
           <Input
             name="name"
@@ -141,7 +90,6 @@ function Form(props) {
               />
             </div>
             <div className="form__preview--image js__profile-preview"></div>
->>>>>>> dev
           </div>
           <Input
             name="email"
