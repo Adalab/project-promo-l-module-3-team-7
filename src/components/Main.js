@@ -16,8 +16,6 @@ function Main() {
 
   const savedUserData = getFromLocalStorage();
 
-  console.log(savedUserData);
-
   const [userData, setUserData] = useState(
     savedUserData
       ? {
@@ -32,6 +30,7 @@ function Main() {
           ...savedUserData,
         }
       : {
+          photo: defaultImage,
           palette: "1",
           name: "",
           job: "",
@@ -42,7 +41,7 @@ function Main() {
         }
   );
   const [isAvatarDefault, setIsAvatarDefault] = useState(true);
-  const [profile, setProfile] = useState({ avatar: defaultImage });
+  // const [profile, setProfile] = useState({ avatar: defaultImage });
 
   const handleChangePalette = (ev) => {
     const newValue = ev.currentTarget.value;
@@ -78,7 +77,8 @@ function Main() {
   }, [userData]);
 
   function updateAvatar(img) {
-    setProfile({ avatar: img });
+    setUserData({ ...userData, photo: img });
+    // setProfile({ avatar: img });
     setIsAvatarDefault(false);
   }
 
@@ -92,7 +92,8 @@ function Main() {
         linkedin={userData.linkedin}
         github={userData.github}
         selectedPalette={userData.palette}
-        avatar={profile.avatar}
+        avatar={userData.photo}
+        // avatar={profile.avatar}
         // selectedPalette={selectedPalette}
       />
       <Form
@@ -106,7 +107,8 @@ function Main() {
         // selectedPalette={selectedPalette}
         selectedPalette={userData.palette}
         changePalette={handleChangePalette}
-        avatar={profile.avatar}
+        avatar={userData.photo}
+        // avatar={profile.avatar}
         updateAvatar={updateAvatar}
         isAvatarDefault={isAvatarDefault}
         userData={userData}

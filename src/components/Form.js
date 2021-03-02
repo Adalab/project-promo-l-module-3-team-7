@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
 import Input from "./Input.js";
-import AvatarBtn from './AvatarBtn';
+import AvatarBtn from "./AvatarBtn";
 
 function Form(props) {
   const [message, setMessage] = useState("");
@@ -33,7 +33,7 @@ function Form(props) {
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
 
-    // const url = "https://awesome-profile-cards.herokuapp.com/card";
+    const url = "https://awesome-profile-cards.herokuapp.com/card";
     function dataSuccess(data) {
       setMessage("La tarjeta ha sido creada:");
       setcardURL(data.cardURL);
@@ -42,16 +42,17 @@ function Form(props) {
       setMessage(data.error);
       setcardURL("");
     }
-    api
-      .fetchCard(props.userData)
-      // fetch(url, {
-      //   method: "POST",
-      //   body: JSON.stringify(props.userData),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
-      // .then((response) => response.json())
+
+    // api
+    //   .fetchCard(props.userData)
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(props.userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
       .then(
         (data) => {
           data.success ? dataSuccess(data) : dataError(data);
@@ -118,13 +119,13 @@ function Form(props) {
             value={props.job}
             handleInput={props.handleInput}
           />
-         
+
           <AvatarBtn
-           avatar={props.avatar} 
-           updateAvatar={props.updateAvatar}
-           isAvatarDefault={props.isAvatarDefault}
+            avatar={props.avatar}
+            updateAvatar={props.updateAvatar}
+            isAvatarDefault={props.isAvatarDefault}
           />
-          
+
           <Input
             name="email"
             label="email"
@@ -175,7 +176,9 @@ function Form(props) {
         <div className={`confirm__share js-card-result ${hiddenClass}`}>
           <p className="confirm__share--title">{message}</p>
           {/* <p className="confirm__share--title">La tarjeta ha sido creada:</p> */}
-          <a className="confirm__share--link" href={cardURL}></a>
+          <a className="confirm__share--link" href={cardURL}>
+            {cardURL}
+          </a>
         </div>
         <div className="rectangle"></div>
       </Collapsable>

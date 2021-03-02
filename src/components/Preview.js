@@ -1,10 +1,9 @@
-import '../style/layout/Preview.scss';
-import defaultImage from "../images/lee.jpg"
-import PropTypes from 'prop-types';
-import Social from './Social';
+import "../style/layout/Preview.scss";
+import defaultImage from "../images/lee.jpg";
+import PropTypes from "prop-types";
+import Social from "./Social";
 
 function Preview(props) {
-
   return (
     <section className="section__card">
       <div className="section__container">
@@ -22,10 +21,17 @@ function Preview(props) {
               {props.job || "Programadora front end"}
             </h4>
           </div>
-          <div className='card__image js__profile-image' style={{backgroundImage: `url(${props.avatar})`}}></div>
-          <div className='card__links--container'>
-            <ul className='logo__list'>
-              <Social aClass='tel' iClass='mobile' href={`tel:${props.tel}`} />
+          <div
+            className="card__image js__profile-image"
+            style={{ backgroundImage: `url(${props.avatar})` }}
+          ></div>
+          <div className="card__links--container">
+            <ul className="logo__list">
+              <Social
+                aClass="tel"
+                iClass="mobile"
+                href={`tel:${props.phone}`}
+              />
               <Social
                 aClass="email"
                 iClass="envelope-o"
@@ -50,7 +56,7 @@ function Preview(props) {
 }
 
 Preview.propTypes = {
-  avatar: PropTypes.string.isRequired
+  avatar: PropTypes.string.isRequired,
 };
 
 export default Preview;
