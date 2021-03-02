@@ -3,7 +3,7 @@ import "../style/layout/_design.scss";
 import "../style/layout/_form.scss";
 import "../style/layout/_share.scss";
 
-// import { fetchCard } from "../services/ApiServer.js";
+import api from "../services/ApiServer.js";
 import React, { useState } from "react";
 
 import Collapsable from "./Collapsable.js";
@@ -32,7 +32,7 @@ function Form(props) {
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
 
-    const url = "https://awesome-profile-cards.herokuapp.com/card";
+    // const url = "https://awesome-profile-cards.herokuapp.com/card";
     function dataSuccess(data) {
       setMessage("La tarjeta ha sido creada:");
       setcardURL(data.cardURL);
@@ -41,15 +41,16 @@ function Form(props) {
       setMessage(data.error);
       setcardURL("");
     }
-
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(props.userData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
+    api
+      .fetchCard(props.userData)
+      // fetch(url, {
+      //   method: "POST",
+      //   body: JSON.stringify(props.userData),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // })
+      // .then((response) => response.json())
       .then(
         (data) => {
           data.success ? dataSuccess(data) : dataError(data);
