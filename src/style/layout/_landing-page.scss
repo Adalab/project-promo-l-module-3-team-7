@@ -13,7 +13,7 @@
   box-sizing: border-box;
   width: 100%;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   background-color: $color-primary-background;
   border: 1px #d8d8d8;
@@ -137,7 +137,7 @@
     text-align: center;
     color: #ffffff;
     @media all and (min-width: 768px) {
-      margin: 186px 145px 60px;
+    
       padding: 10px 20.5px 10px 19.5px;
     }
   }

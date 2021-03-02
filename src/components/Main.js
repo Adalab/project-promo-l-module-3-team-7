@@ -2,6 +2,7 @@
 import Form from "./Form";
 import Preview from "./Preview";
 import "../style/layout/_card-page.scss";
+import defaultImage from "../images/lee.jpg";
 import React, { useEffect, useState } from "react";
 
 function Main() {
@@ -40,6 +41,8 @@ function Main() {
           github: "",
         }
   );
+  const [isAvatarDefault, setIsAvatarDefault] = useState(true);
+  const [profile, setProfile] = useState({ avatar: defaultImage });
 
   const handleChangePalette = (ev) => {
     const newValue = ev.currentTarget.value;
@@ -67,13 +70,17 @@ function Main() {
     // } else if (field === "github") {
     //   setUserData({ ...userData, github: ev.target.value });
     // }
-    
   }
 
   useEffect(() => {
     console.log("Me estoy montando");
     localStorage.setItem("userDataAPC", JSON.stringify(userData));
   }, [userData]);
+
+  function updateAvatar(img) {
+    setProfile({ avatar: img });
+    setIsAvatarDefault(false);
+  }
 
   return (
     <main className="main">
@@ -85,6 +92,7 @@ function Main() {
         linkedin={userData.linkedin}
         github={userData.github}
         selectedPalette={userData.palette}
+        avatar={profile.avatar}
         // selectedPalette={selectedPalette}
       />
       <Form
@@ -98,8 +106,9 @@ function Main() {
         // selectedPalette={selectedPalette}
         selectedPalette={userData.palette}
         changePalette={handleChangePalette}
-        // getUserData={getUserData}
-        // getUserData={userData}
+        avatar={profile.avatar}
+        updateAvatar={updateAvatar}
+        isAvatarDefault={isAvatarDefault}
         userData={userData}
       />
     </main>

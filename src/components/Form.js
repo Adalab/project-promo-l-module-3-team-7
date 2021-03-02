@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
 import Input from "./Input.js";
+import AvatarBtn from './AvatarBtn';
 
 function Form(props) {
   const [message, setMessage] = useState("");
@@ -117,29 +118,13 @@ function Form(props) {
             value={props.job}
             handleInput={props.handleInput}
           />
-          <div className="form__display--image">
-            <div>
-              <label className="form__label js-label-image" htmlFor="photo">
-                Imagen de perfil
-              </label>
-              <button
-                className="btn__submit--image js__profile-trigger"
-                type="submit"
-                value="Anadir imagen"
-                name="photo"
-                id="photo"
-                required
-              >
-                Añadir imagen
-              </button>
-              <input
-                type="file"
-                name=""
-                className="btn__submit--image action__hiddenField js__profile-upload-btn"
-              />
-            </div>
-            <div className="form__preview--image js__profile-preview"></div>
-          </div>
+         
+          <AvatarBtn
+           avatar={props.avatar} 
+           updateAvatar={props.updateAvatar}
+           isAvatarDefault={props.isAvatarDefault}
+          />
+          
           <Input
             name="email"
             label="email"
