@@ -26,7 +26,7 @@ function AvatarBtn(props) {
               </label>
               <button
                 className="btn__submit--image js__profile-trigger"
-                type="submit"
+                // type="submit"
                 value="Anadir imagen"
                 name="photo"
                 id="photo"
