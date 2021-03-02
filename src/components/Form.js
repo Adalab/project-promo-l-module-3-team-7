@@ -3,7 +3,7 @@ import "../style/layout/_design.scss";
 import "../style/layout/_form.scss";
 import "../style/layout/_share.scss";
 
-// import { fetchCard } from "../services/Api.js";
+// import { fetchCard } from "../services/ApiServer.js";
 import React, { useState } from "react";
 
 import Collapsable from "./Collapsable.js";
@@ -15,30 +15,57 @@ function Form(props) {
   const [cardURL, setcardURL] = useState("");
   const [hiddenClass, setHiddenClass] = useState("share-hidden");
 
+  // const handleCreateBtn = (ev) => {
+  //   ev.preventDefault();
+
+  //   fetchCard(props.userData).then((data) => {
+  //     if (data.success === true) {
+  //       setMessage("La tarjeta ha sido creada:");
+  //       setcardURL(data.cardURL);
+  //     } else {
+  //       setMessage(data.error);
+  //       setcardURL("");
+  //     }
+  //     setHiddenClass("");
+  //   });
+  // };
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
 
     const url = "https://awesome-profile-cards.herokuapp.com/card";
-    const userData = props.getUserData();
-    console.log(userData);
+    function dataSuccess(data) {
+      setMessage("La tarjeta ha sido creada:");
+      setcardURL(data.cardURL);
+    }
+    function dataError(data) {
+      setMessage(data.error);
+      setcardURL("");
+    }
+
     fetch(url, {
       method: "POST",
-      body: JSON.stringify(userData),
+      body: JSON.stringify(props.userData),
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        if (data.success === true) {
-          setMessage("La tarjeta ha sido creada:");
-          setcardURL(data.cardURL);
-        } else {
-          setMessage(data.error);
-          setcardURL("");
+      .then(
+        (data) => {
+          data.success ? dataSuccess(data) : dataError(data);
+          setHiddenClass("");
         }
-        setHiddenClass("");
-      });
+        // {
+        //   if (data.success === true) {
+        //     setMessage("La tarjeta ha sido creada:");
+        //     setcardURL(data.cardURL);
+        //   } else {
+        //     setMessage(data.error);
+        //     setcardURL("");
+        //   }
+        //   setHiddenClass("");
+        // }
+      );
   };
 
   return (

@@ -175,7 +175,8 @@ function Main() {
         selectedPalette={userData.palette}
         changePalette={handleChangePalette}
         // getUserData={getUserData}
-        getUserData={userData}
+        // getUserData={userData}
+        userData={userData}
       />
     </main>
   );
