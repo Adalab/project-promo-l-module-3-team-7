@@ -1,19 +1,15 @@
-import "../style/App.scss";
-import "../style/layout/_card-page.scss";
-import Header from "./Header";
-import Main from "./Main";
-import Footer from "./Footer";
-
-
-
+import '../style/App.scss';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Landing from './Landing';
+import CardGenerator from './CardGenerator';
 
 function App() {
   return (
-    <div className="page__column">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <Switch>
+      <Route exact path='/' component={Landing} />
+      <Route path='/card-generator' component={CardGenerator} />
+    </Switch>
   );
 }
 
