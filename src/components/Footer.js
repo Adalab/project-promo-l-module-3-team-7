@@ -1,3 +1,5 @@
+//import "../style/App.scss";
+import React from "react";
 import logoAdalab from "../images/logo-adalab.png";
 import "../style/layout/Footer.scss";
 
