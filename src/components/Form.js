@@ -6,6 +6,27 @@ import "../style/layout/_share.scss";
 import api from "../services/ApiServer.js";
 import React, { useState } from "react";
 
+//
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  PinterestShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
+
+import {
+  EmailIcon,
+  FacebookIcon,
+  PinterestIcon,
+  TelegramIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
+
+//
+
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
 import Input from "./Input.js";
@@ -53,22 +74,10 @@ function Form(props) {
       },
     })
       .then((response) => response.json())
-      .then(
-        (data) => {
-          data.success ? dataSuccess(data) : dataError(data);
-          setHiddenClass("");
-        }
-        // {
-        //   if (data.success === true) {
-        //     setMessage("La tarjeta ha sido creada:");
-        //     setcardURL(data.cardURL);
-        //   } else {
-        //     setMessage(data.error);
-        //     setcardURL("");
-        //   }
-        //   setHiddenClass("");
-        // }
-      );
+      .then((data) => {
+        data.success ? dataSuccess(data) : dataError(data);
+        setHiddenClass("");
+      });
   };
 
   return (
@@ -180,7 +189,61 @@ function Form(props) {
             {cardURL}
           </a>
         </div>
-        <div className="rectangle"></div>
+        {/* <div>
+          <a
+            className=""
+            href={`https://twitter.com/intent/tweet?text=Mi%20nueva%20tarjeta%20${cardURL}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className="">compartir en twitter</span>
+          </a>
+        </div> */}
+        <div>
+          <EmailShareButton
+            url={cardURL}
+            children={<EmailIcon size={32} round={true} />}
+            subject="Mi nueva tarjeta de visita"
+            body="Te mando mi nueva tarjeta hecha por las Awesome Reacters. (Si quieres una igual, entra en https://beta.adalab.es/project-promo-l-module-3-team-7/#/)"
+            separator=" => "
+          />
+          <FacebookShareButton
+            url={cardURL}
+            children={<FacebookIcon size={32} round={true} />}
+            quote="Mi nueva tarjeta de visita"
+          />
+          <TwitterShareButton
+            url={cardURL}
+            children={<TwitterIcon size={32} round={true} />}
+            title="Mi nueva tarjeta de visita"
+          />
+          <WhatsappShareButton
+            url={cardURL}
+            children={<WhatsappIcon size={32} round={true} />}
+            title="Mi nueva tarjeta de visita"
+          />
+          <TelegramShareButton
+            url={cardURL}
+            children={<TelegramIcon size={32} round={true} />}
+            title="Mi nueva tarjeta de visita"
+          />
+        </div>
+
+        {/* <div
+          className="fb-share-button"
+          data-href={`https://${cardURL}`}
+          data-layout="button"
+          data-size="small"
+        >
+          <a
+            target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fourbrandnewcard.com%2F&amp;src=sdkpreparse"
+            className="fb-xfbml-parse-ignore"
+            rel="noreferrer"
+          >
+            Share facebook
+          </a>
+        </div> */}
       </Collapsable>
     </form>
   );

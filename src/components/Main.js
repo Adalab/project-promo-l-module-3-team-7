@@ -1,16 +1,16 @@
 //import "../style/App.scss";
-import Form from './Form';
-import Preview from './Preview';
-import '../style/layout/_card-page.scss';
-import defaultImage from '../images/lee.jpg';
-import React, { useEffect, useState } from 'react';
+import Form from "./Form";
+import Preview from "./Preview";
+import "../style/layout/_card-page.scss";
+import defaultImage from "../images/lee.jpg";
+import React, { useEffect, useState } from "react";
 
 function Main() {
-  console.log('Me estoy renderizando');
+  console.log("Me estoy renderizando");
 
   function getFromLocalStorage() {
     // if (localStorage.getItem("userDataAPC") !== null) {
-    return JSON.parse(localStorage.getItem('userDataAPC'));
+    return JSON.parse(localStorage.getItem("userDataAPC"));
     // }
   }
 
@@ -31,13 +31,13 @@ function Main() {
         }
       : {
           photo: defaultImage,
-          palette: '1',
-          name: '',
-          job: '',
-          email: '',
-          phone: '',
-          linkedin: '',
-          github: '',
+          palette: "1",
+          name: "",
+          job: "",
+          email: "",
+          phone: "",
+          linkedin: "",
+          github: "",
         }
   );
   const [isAvatarDefault, setIsAvatarDefault] = useState(true);
@@ -72,8 +72,8 @@ function Main() {
   }
 
   useEffect(() => {
-    console.log('Me estoy montando');
-    localStorage.setItem('userDataAPC', JSON.stringify(userData));
+    console.log("Me estoy montando");
+    localStorage.setItem("userDataAPC", JSON.stringify(userData));
   }, [userData]);
 
   function updateAvatar(img) {
@@ -85,17 +85,17 @@ function Main() {
     return setUserData({
       ...userData,
       photo: defaultImage,
-      palette: '1',
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
+      palette: "1",
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
     });
   };
   return (
-    <main className='main'>
+    <main className="main">
       <Preview
         job={userData.job}
         name={userData.name}
@@ -115,11 +115,9 @@ function Main() {
         linkedin={userData.linkedin}
         github={userData.github}
         handleInput={handleInput}
-        // selectedPalette={selectedPalette}
         selectedPalette={userData.palette}
         changePalette={handleChangePalette}
         avatar={userData.photo}
-        // avatar={profile.avatar}
         updateAvatar={updateAvatar}
         isAvatarDefault={isAvatarDefault}
         userData={userData}
