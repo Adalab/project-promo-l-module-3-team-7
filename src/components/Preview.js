@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 import Social from './Social';
 
 function Preview(props) {
+  const handleResetClick = () => {
+    props.resetUserData();
+  };
   return (
     <section className='section__card'>
       <div className='section__container'>
-        <button className='reset js-reset'>
+        <button className='reset js-reset' onClick={handleResetClick}>
           <i className='fa fa-trash'></i>Reset
         </button>
         <div
