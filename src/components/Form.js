@@ -104,6 +104,12 @@ function Form(props) {
           selectedPalette={props.selectedPalette}
           changePalette={props.changePalette}
         />
+        <Palette
+          value="4"
+          selectedPalette={props.selectedPalette}
+          changePalette={props.changePalette}
+          color={`#${bgrColor}`}
+        />
         <SketchPicker
           color={bgrColor}
           onChangeComplete={handleChangeComplete}
