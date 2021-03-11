@@ -92,6 +92,7 @@ function Main() {
       phone: '',
       linkedin: '',
       github: '',
+      // customColors: [color1, color2, color3]
     });
   };
   return (

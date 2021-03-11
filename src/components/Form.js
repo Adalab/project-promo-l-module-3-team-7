@@ -11,10 +11,13 @@ import Palette from "./Palette.js";
 import Input from "./Input.js";
 import AvatarBtn from "./AvatarBtn";
 
+import { SketchPicker } from "react-color";
+
 function Form(props) {
   const [message, setMessage] = useState("");
   const [cardURL, setcardURL] = useState("");
   const [hiddenClass, setHiddenClass] = useState("share-hidden");
+  const [bgrColor, setBgrColor] = useState("fabdaa");
 
   // const handleCreateBtn = (ev) => {
   //   ev.preventDefault();
@@ -71,6 +74,10 @@ function Form(props) {
       );
   };
 
+  const handleChangeComplete = (color) => {
+    setBgrColor(color.hex);
+  };
+
   return (
     <form method="" action="" className="collapsable-container">
       <Collapsable
@@ -96,6 +103,10 @@ function Form(props) {
           value="3"
           selectedPalette={props.selectedPalette}
           changePalette={props.changePalette}
+        />
+        <SketchPicker
+          color={bgrColor}
+          onChangeComplete={handleChangeComplete}
         />
       </Collapsable>
       <Collapsable
