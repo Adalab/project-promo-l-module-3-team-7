@@ -33,7 +33,7 @@ function Form(props) {
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
 
-    const url = "https://awesome-profile-cards.herokuapp.com/card";
+    const url = "http://localhost:3000/card";
     function dataSuccess(data) {
       setMessage("La tarjeta ha sido creada:");
       setcardURL(data.cardURL);

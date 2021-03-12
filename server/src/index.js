@@ -17,8 +17,7 @@ app.listen(serverPort, () => {
 // });
 
 app.post('/card', (req, res) => {
-    console.log(req);
-    console.log(res);
+    console.log(req.body);
     // Cojo los datos que recibo desde el navegador que están en req.body.email y req.body.password
     // Con estos datos busco en el array de usuarios si el usuario existe
     // const userFound = usersData.find(user => {
