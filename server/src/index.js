@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-
+const path = require('path');
 const app = express();
 
 app.use(cors());
@@ -11,31 +11,52 @@ app.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
+// static server
+const staticServerPath = './public'; 
+app.use(express.static(staticServerPath));
+
 // app.get('/card/:id:/', (req, res) => {
 //     console.log('Me estan llamando');
 // //   res.json(response);
 // });
 
 app.post('/card', (req, res) => {
-    console.log(req.body);
-    // Cojo los datos que recibo desde el navegador que están en req.body.email y req.body.password
-    // Con estos datos busco en el array de usuarios si el usuario existe
-    // const userFound = usersData.find(user => {
-    //   return user.email === req.body.email && user.password === req.body.password;
-    // });
-  
-    // if (userFound !== undefined) {
-    //   // Si el usuario existe devuelvo el id del usuario
-    //   res.json({
-    //     error: false,
-    //     userId: userFound.id
-    //   });
-    // } else {
-    //   // Si el usuario no existe devuelvo un error
-    //   res.status(404).json({
-    //     error: 'user-not-found',
-    //     message: 'User not found'
-    //   });
-    // }
+  console.log(req.body);
+  const response = {};
+  if (!req.body.name) {
+    response.success = false;
+    response.error = 'Campo obligatorio: nombre';
+  } else if (!req.body.job) {
+    response.success = false;
+    response.error = 'Campo obligatorio: profesión';
+  } else if (!req.body.email) {
+    response.success = false;
+    response.error = 'Campo obligatorio: email';
+  }else if (!req.body.phone) {
+    response.success = false;
+    response.error = 'Campo obligatorio: teléfono';
+  } else if (!req.body.linkedin) {
+    response.success = false;
+    response.error = 'Campo obligatorio: linkedin';
+  } else if (!req.body.github) {
+    response.success = false;
+    response.error = 'Campo obligatorio: github';
+  } else if (!req.body.palette || req.body.palette !== '1' || req.body.palette !== '2' || req.body.palette !== '3') {
+    response.success = false;
+    response.error = 'Campo obligatorio: palette';
+  } else if (!req.body.photo) {
+    response.success = false;
+    response.error = 'Campo obligatorio: photo';
+  } else {
+    response.success = true;
+    response.cardURL = 'https://'
+  }
+  res.json(response);
   });
   
+  // error
+  app.get('*', (req, res) => {
+    const pathRelativeRoute = '../public/404-page-not-found.html';
+    const pathAbsoluteRoute = path.join(__dirname, pathRelativeRoute);
+    res.status(404).sendFile(pathAbsoluteRoute);
+  });
