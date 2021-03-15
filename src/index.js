@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-
+app.use(express.json({ limit: '50mb' })); //No mover esta linea!! Error 413!! Alert! Alert!
 app.use(cors());
 app.use(express.json());
 
@@ -20,7 +20,12 @@ app.use(express.static(staticServerPath));
 // //   res.json(response);
 // });
 
+
+
+// app.use(express.json({ limit: '50mb' }));
+
 app.post('/card', (req, res) => {
+  
   console.log(req.body);
   const response = {};
   if (!req.body.name) {

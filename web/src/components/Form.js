@@ -52,7 +52,14 @@ function Form(props) {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error(response.statusText);
+        }
+        else {
+          return response.json();
+        }
+      })
       .then(
         (data) => {
           data.success ? dataSuccess(data) : dataError(data);
@@ -68,7 +75,8 @@ function Form(props) {
         //   }
         //   setHiddenClass("");
         // }
-      );
+    )
+    .catch(error=>console.log(error));
   };
 
   return (
