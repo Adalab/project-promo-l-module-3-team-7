@@ -15,14 +15,27 @@ app.set("view engine", "ejs");
 
 // static server
 const staticServerPath = "./public";
-app.use(express.static(staticServerPath));
+app.use(express.static(__dirname + staticServerPath));
 
-// app.get('/card/:id:/', (req, res) => {
-//     console.log('Me estan llamando');
-// //   res.json(response);
-// });
-
-// app.use(express.json({ limit: '50mb' }));
+app.get("/card/:id/", (req, res) => {
+  console.log("Me estan llamando");
+  const data = {
+    // photo: defaultImage,
+    palette: "1",
+    name: "Marina",
+    job: "domadora de unicornios",
+    email: "email",
+    phone: "phone",
+    linkedin: "linked",
+    github: "github",
+    customColors: {
+      color1: "#667788",
+      color2: "#f47373",
+      color3: "#FABDAA",
+    },
+  };
+  res.render("pages/card", data);
+});
 
 app.post("/card", (req, res) => {
   console.log(req.body);

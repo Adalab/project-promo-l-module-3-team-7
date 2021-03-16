@@ -1,0 +1,71 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&amp;family=Montserrat:wght@700&amp;family=Open+Sans:wght@400;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <title>Awesome Cards</title>
+  </head>
+  <body>
+    <section class="section__card">
+      <div class="section__container">
+        <div class="card palette3card js_preview-card palette-<%= palette %>">
+          <div class="card__titles">
+            <h3 class="card__titles--name"><%= name %></h3>
+            <h4 class="card__titles--job"><%= job %></h4>
+          </div>
+          <div
+            class="card__image js__profile-image"
+            style="background-image: url('/static/media/lee.c3c2fb88.jpg')"
+          ></div>
+          <div class="card__links--container">
+            <ul class="logo__list">
+              <li class="logo__list--item">
+                <a class="link__card" title="" href="tel:<%= phone %> "
+                  ><i class="fa fa-mobile"></i
+                ></a>
+              </li>
+              <li class="logo__list--item">
+                <a class="link__card" title="" href="mailto:<%= email %> "
+                  ><i class="fa fa-envelope-o"></i
+                ></a>
+              </li>
+              <li class="logo__list--item">
+                <a
+                  class="link__card"
+                  title=""
+                  href="https://www.linkedin.com/in/<%= linkedin %> "
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </li>
+              <li class="logo__list--item">
+                <a
+                  class="link__card"
+                  title=""
+                  href="https://github.com/<%= github %> "
+                  ><i class="fa fa-github-alt"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!-- <%= job %> -->
