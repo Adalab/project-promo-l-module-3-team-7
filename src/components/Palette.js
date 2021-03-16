@@ -12,11 +12,21 @@ function Palette(props) {
         checked={props.selectedPalette === props.value}
       />
       <ul className={`palette-${props.value}-election`}>
-        <li className="design__square-color color-1">Color A</li>
-        <li className="design__square-color color-2">Color B</li>
+        <li
+          className="design__square-color color-1"
+          style={{ backgroundColor: props.color1 }}
+        >
+          Color A
+        </li>
+        <li
+          className="design__square-color color-2"
+          style={{ backgroundColor: props.color2 }}
+        >
+          Color B
+        </li>
         <li
           className="design__square-color color-3"
-          style={{ backgroundColor: props.color }}
+          style={{ backgroundColor: props.color3 }}
         >
           Color C
         </li>

@@ -11,13 +11,14 @@ import Palette from "./Palette.js";
 import Input from "./Input.js";
 import AvatarBtn from "./AvatarBtn";
 
-import { SketchPicker } from "react-color";
+import { BlockPicker } from "react-color";
 
 function Form(props) {
   const [message, setMessage] = useState("");
   const [cardURL, setcardURL] = useState("");
   const [hiddenClass, setHiddenClass] = useState("share-hidden");
-  const [bgrColor, setBgrColor] = useState("fabdaa");
+
+  const bgrColor = props.colors;
 
   // const handleCreateBtn = (ev) => {
   //   ev.preventDefault();
@@ -56,26 +57,33 @@ function Form(props) {
       },
     })
       .then((response) => response.json())
-      .then(
-        (data) => {
-          data.success ? dataSuccess(data) : dataError(data);
-          setHiddenClass("");
-        }
-        // {
-        //   if (data.success === true) {
-        //     setMessage("La tarjeta ha sido creada:");
-        //     setcardURL(data.cardURL);
-        //   } else {
-        //     setMessage(data.error);
-        //     setcardURL("");
-        //   }
-        //   setHiddenClass("");
-        // }
-      );
+      .then((data) => {
+        data.success ? dataSuccess(data) : dataError(data);
+        setHiddenClass("");
+      });
   };
 
-  const handleChangeComplete = (color) => {
-    setBgrColor(color.hex);
+  const handleColorChange = (ev) => {
+    console.log(ev.target.closest(".color-container"));
+    const parent = ev.target.closest(".color-container");
+    const attr = parent.getAttribute("data-color");
+    return attr;
+  };
+
+  const onSwatchHover = (color, ev) => {
+    handleColorChange(ev);
+    console.log(color);
+    const attr = handleColorChange(ev);
+    console.log(attr);
+    if (attr === "1") {
+      props.handleUpdateColors({ key: "color1", color: color.hex });
+    }
+    if (attr === "2") {
+      props.handleUpdateColors({ key: "color2", color: color.hex });
+    }
+    if (attr === "3") {
+      props.handleUpdateColors({ key: "color3", color: color.hex });
+    }
   };
 
   return (
@@ -108,12 +116,43 @@ function Form(props) {
           value="4"
           selectedPalette={props.selectedPalette}
           changePalette={props.changePalette}
-          color={`#${bgrColor}`}
+          color1={`${bgrColor.color1}`}
+          color2={`${bgrColor.color2}`}
+          color3={`${bgrColor.color3}`}
         />
-        <SketchPicker
-          color={bgrColor}
-          onChangeComplete={handleChangeComplete}
-        />
+        {props.selectedPalette === "4" ? (
+          <div className="color-pickers">
+            <div className="color-container" data-color="1">
+              <BlockPicker
+                color={bgrColor.color1}
+                onSwatchHover={onSwatchHover}
+                onChangeComplete={onSwatchHover}
+                width="100%"
+                colors={[]}
+              />
+            </div>
+            <div className="color-container" data-color="2">
+              <BlockPicker
+                color={bgrColor.color2}
+                onSwatchHover={onSwatchHover}
+                onChangeComplete={onSwatchHover}
+                width="100%"
+                colors={[]}
+              />
+            </div>
+            <div className="color-container" data-color="3">
+              <BlockPicker
+                color={bgrColor.color3}
+                onSwatchHover={onSwatchHover}
+                onChangeComplete={onSwatchHover}
+                width="100%"
+                colors={[]}
+              />
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
       </Collapsable>
       <Collapsable
         title="Rellena"
@@ -192,7 +231,6 @@ function Form(props) {
 
         <div className={`confirm__share js-card-result ${hiddenClass}`}>
           <p className="confirm__share--title">{message}</p>
-          {/* <p className="confirm__share--title">La tarjeta ha sido creada:</p> */}
           <a className="confirm__share--link" href={cardURL}>
             {cardURL}
           </a>
