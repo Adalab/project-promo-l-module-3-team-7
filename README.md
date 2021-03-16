@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Awesome Profile Cards
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hello! We are the Awesome Reacters and this project is the result of our third and fourth modules at Adalab. On it, we've adapted to React a project that we previously developed on Javascript.We have also created a server that has the same functionality as the server created by the Adalab teachers. It's the Awesome Profile Cards; an application that allows you to create digital customized visit cards and share them with your contacts.
 
-## Available Scripts
+## The structure
 
-In the project directory, you can run:
+The project consists of two pages:
 
-### `npm start`
+A welcome landing page, with a brief explanation of the application.
+The main page, where you can create your customized visit card.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How it works.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1-First, you can add a personal touch to your future card by choosing a color palette from the options pannel or of a color Wheel.
+2-Then, fill your personal information in the given fields and add your best picture. On the right side of the page, top side on mobile version, you will see the preview of your card as you are generating it.
+3-If you are not that convinced by what you see, clicking on the "reset" button will delete the process of creating the card so you can start over again!
+4-Finally, simply create your card by clicking on the "crear tarjeta" button and, volià! There's your customized visit card to share with your contacts. To ease that process, you'll find another button below that enables you to directly share it on Twitter, Linkedin, Pinterest, Whatsapp or Telegram .
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies we used.
 
-### `npm run build`
+React
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+JavaScript
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Sass
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+React router
 
-### `npm run eject`
+Git for version control
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Mediaqueries - Mobile First Design
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Use of LocalStorage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Use of APIs
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Node JS 
 
-## Learn More
+Express JS 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
