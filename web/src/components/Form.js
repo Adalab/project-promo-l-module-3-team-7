@@ -11,10 +11,14 @@ import Palette from "./Palette.js";
 import Input from "./Input.js";
 import AvatarBtn from "./AvatarBtn";
 
+import { BlockPicker } from "react-color";
+
 function Form(props) {
   const [message, setMessage] = useState("");
   const [cardURL, setcardURL] = useState("");
   const [hiddenClass, setHiddenClass] = useState("share-hidden");
+
+  const bgrColor = props.colors;
 
   // const handleCreateBtn = (ev) => {
   //   ev.preventDefault();
@@ -33,7 +37,7 @@ function Form(props) {
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
 
-    const url = "http://localhost:3000/card";
+    const url = "https://awesome-profile-cards.herokuapp.com/card";
     function dataSuccess(data) {
       setMessage("La tarjeta ha sido creada:");
       setcardURL(data.cardURL);
@@ -52,31 +56,34 @@ function Form(props) {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
-        if (response.status >= 400) {
-          throw new Error(response.statusText);
-        }
-        else {
-          return response.json();
-        }
-      })
-      .then(
-        (data) => {
-          data.success ? dataSuccess(data) : dataError(data);
-          setHiddenClass("");
-        }
-        // {
-        //   if (data.success === true) {
-        //     setMessage("La tarjeta ha sido creada:");
-        //     setcardURL(data.cardURL);
-        //   } else {
-        //     setMessage(data.error);
-        //     setcardURL("");
-        //   }
-        //   setHiddenClass("");
-        // }
-    )
-    .catch(error=>console.log(error));
+      .then((response) => response.json())
+      .then((data) => {
+        data.success ? dataSuccess(data) : dataError(data);
+        setHiddenClass("");
+      });
+  };
+
+  const handleColorChange = (ev) => {
+    console.log(ev.target.closest(".color-container"));
+    const parent = ev.target.closest(".color-container");
+    const attr = parent.getAttribute("data-color");
+    return attr;
+  };
+
+  const onSwatchHover = (color, ev) => {
+    handleColorChange(ev);
+    console.log(color);
+    const attr = handleColorChange(ev);
+    console.log(attr);
+    if (attr === "1") {
+      props.handleUpdateColors({ key: "color1", color: color.hex });
+    }
+    if (attr === "2") {
+      props.handleUpdateColors({ key: "color2", color: color.hex });
+    }
+    if (attr === "3") {
+      props.handleUpdateColors({ key: "color3", color: color.hex });
+    }
   };
 
   return (
@@ -105,6 +112,47 @@ function Form(props) {
           selectedPalette={props.selectedPalette}
           changePalette={props.changePalette}
         />
+        <Palette
+          value="4"
+          selectedPalette={props.selectedPalette}
+          changePalette={props.changePalette}
+          color1={`${bgrColor.color1}`}
+          color2={`${bgrColor.color2}`}
+          color3={`${bgrColor.color3}`}
+        />
+        {props.selectedPalette === "4" ? (
+          <div className="color-pickers">
+            <div className="color-container" data-color="1">
+              <BlockPicker
+                color={bgrColor.color1}
+                onSwatchHover={onSwatchHover}
+                onChangeComplete={onSwatchHover}
+                width="100%"
+                colors={[]}
+              />
+            </div>
+            <div className="color-container" data-color="2">
+              <BlockPicker
+                color={bgrColor.color2}
+                onSwatchHover={onSwatchHover}
+                onChangeComplete={onSwatchHover}
+                width="100%"
+                colors={[]}
+              />
+            </div>
+            <div className="color-container" data-color="3">
+              <BlockPicker
+                color={bgrColor.color3}
+                onSwatchHover={onSwatchHover}
+                onChangeComplete={onSwatchHover}
+                width="100%"
+                colors={[]}
+              />
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
       </Collapsable>
       <Collapsable
         title="Rellena"
@@ -183,7 +231,6 @@ function Form(props) {
 
         <div className={`confirm__share js-card-result ${hiddenClass}`}>
           <p className="confirm__share--title">{message}</p>
-          {/* <p className="confirm__share--title">La tarjeta ha sido creada:</p> */}
           <a className="confirm__share--link" href={cardURL}>
             {cardURL}
           </a>
