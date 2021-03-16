@@ -89,26 +89,3 @@
     background-color: $color-palette-3-color-3;
   }
 }
-
-.palette-4-election {
-  .color-1 {
-    background-color: $color-palette-3-color-1;
-  }
-  .color-2 {
-    background-color: $color-palette-3-color-2;
-  }
-  .color-3 {
-    background-color: $color-palette-3-color-3;
-  }
-}
-
-// color pickers
-
-.color-pickers {
-  margin: 32px 0 12px;
-  display: flex;
-  justify-content: space-between;
-  .color-container {
-    width: 32%;
-  }
-}
