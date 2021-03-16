@@ -54,6 +54,26 @@
   @media all and (min-width: 768px) {
     margin: 0;
   }
+  .social-icons {
+    margin: 0 0 8px;
+    text-align: center;
+    &--title {
+    margin: 20px 0 5px 0;
+    font-family: $font-second;
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $color-cards-text;
+
+    }
+    &--icon {
+      margin: 0 2px;
+    }
+  }
 }
 .confirm__share {
   width: 95vw;

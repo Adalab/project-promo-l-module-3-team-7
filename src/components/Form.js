@@ -10,7 +10,6 @@ import React, { useState } from "react";
 import {
   EmailShareButton,
   FacebookShareButton,
-  PinterestShareButton,
   TelegramShareButton,
   TwitterShareButton,
   WhatsappShareButton,
@@ -19,7 +18,6 @@ import {
 import {
   EmailIcon,
   FacebookIcon,
-  PinterestIcon,
   TelegramIcon,
   TwitterIcon,
   WhatsappIcon,
@@ -36,6 +34,9 @@ function Form(props) {
   const [message, setMessage] = useState("");
   const [cardURL, setcardURL] = useState("");
   const [hiddenClass, setHiddenClass] = useState("share-hidden");
+  const [visibilitySocialIcons, setvisibilitySocialIcons] = useState(
+    "share-hidden"
+  );
 
   // const handleCreateBtn = (ev) => {
   //   ev.preventDefault();
@@ -58,6 +59,7 @@ function Form(props) {
     function dataSuccess(data) {
       setMessage("La tarjeta ha sido creada:");
       setcardURL(data.cardURL);
+      setvisibilitySocialIcons("");
     }
     function dataError(data) {
       setMessage(data.error);
@@ -188,6 +190,66 @@ function Form(props) {
           <a className="confirm__share--link" href={cardURL}>
             {cardURL}
           </a>
+          <div className={`social-icons ${visibilitySocialIcons}`}>
+            <p className="social-icons--title">Comparte tu nueva tarjeta:</p>
+            <EmailShareButton
+              url={cardURL}
+              children={
+                <EmailIcon
+                  className="social-icons--icon"
+                  size={32}
+                  round={true}
+                />
+              }
+              subject="Mi nueva tarjeta de visita"
+              body="Te mando mi nueva tarjeta hecha por las Awesome Reacters. (Si quieres una igual, entra en https://beta.adalab.es/project-promo-l-module-3-team-7/#/)"
+              separator=" => "
+            />
+            <FacebookShareButton
+              url={cardURL}
+              children={
+                <FacebookIcon
+                  className="social-icons--icon"
+                  size={32}
+                  round={true}
+                />
+              }
+              quote="Mi nueva tarjeta de visita"
+            />
+            <TwitterShareButton
+              url={cardURL}
+              children={
+                <TwitterIcon
+                  className="social-icons--icon"
+                  size={32}
+                  round={true}
+                />
+              }
+              title="Mi nueva tarjeta de visita"
+            />
+            <WhatsappShareButton
+              url={cardURL}
+              children={
+                <WhatsappIcon
+                  className="social-icons--icon"
+                  size={32}
+                  round={true}
+                />
+              }
+              title="Mi nueva tarjeta de visita"
+            />
+            <TelegramShareButton
+              url={cardURL}
+              children={
+                <TelegramIcon
+                  className="social-icons--icon"
+                  size={32}
+                  round={true}
+                />
+              }
+              title="Mi nueva tarjeta de visita"
+            />
+          </div>
         </div>
         {/* <div>
           <a
@@ -199,7 +261,7 @@ function Form(props) {
             <span className="">compartir en twitter</span>
           </a>
         </div> */}
-        <div>
+        {/* <div>
           <EmailShareButton
             url={cardURL}
             children={<EmailIcon size={32} round={true} />}
@@ -227,7 +289,7 @@ function Form(props) {
             children={<TelegramIcon size={32} round={true} />}
             title="Mi nueva tarjeta de visita"
           />
-        </div>
+        </div> */}
 
         {/* <div
           className="fb-share-button"
