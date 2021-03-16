@@ -89,3 +89,14 @@
     background-color: $color-palette-3-color-3;
   }
 }
+
+// color pickers
+
+.color-pickers {
+  margin: 32px 0 12px;
+  display: flex;
+  justify-content: space-between;
+  .color-container {
+    width: 32%;
+  }
+}
