@@ -6,7 +6,7 @@ app.use(express.json({ limit: '50mb' })); //No mover esta linea!! Error 413!! Al
 app.use(cors());
 app.use(express.json());
 
-const serverPort = 3000;
+const serverPort = process.env.PORT || 3000;
 app.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
