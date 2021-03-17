@@ -1,4 +1,4 @@
-@import "../core/reset";
+@import '../core/reset';
 
 .header__cards {
   box-sizing: border-box;
@@ -8,5 +8,9 @@
   &--photo {
     height: 50px;
     width: 201px;
+  }
+
+  &--photo {
+    width: 250px;
   }
 }
