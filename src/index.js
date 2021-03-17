@@ -35,6 +35,7 @@ app.get("/card/:id/", (req, res) => {
     },
   };
   res.render("pages/card", data);
+  // 
 });
 
 app.post("/card", (req, res) => {
@@ -62,7 +63,8 @@ app.post("/card", (req, res) => {
     !req.body.palette ||
     req.body.palette !== "1" ||
     req.body.palette !== "2" ||
-    req.body.palette !== "3"
+    req.body.palette !== "3" ||
+    req.body.palette !== "4"
   ) {
     response.success = false;
     response.error = "Campo obligatorio: palette";
@@ -74,6 +76,8 @@ app.post("/card", (req, res) => {
     response.cardURL = "https://";
   }
   res.json(response);
+  // INSERT
+  // devolvemos success y la direccion
 });
 
 // error
