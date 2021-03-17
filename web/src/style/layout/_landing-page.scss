@@ -23,11 +23,9 @@
     height: calc(100vh - 60px);
   }
   &__logo {
-    width: 250px;
-    height: 63px;
+    width: 400px;
     @media all and (min-width: 768px) {
-      width: 419px;
-      height: 105px;
+      width: 900px;
     }
   }
   &__content {
