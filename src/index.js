@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const Database = require('sqlite3');
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const Database = require("sqlite3");
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" })); //No mover esta linea!! Error 413!! Alert! Alert!
@@ -20,23 +20,25 @@ app.use(express.static(staticServerPath));
 
 app.get("/card/:id/", (req, res) => {
   console.log("Me estan llamando" + req.params.id);
-  const data = {
-    // photo: defaultImage,
-    palette: "1",
-    name: "Marina",
-    job: "domadora de unicornios",
-    email: "email",
-    phone: "phone",
-    linkedin: "linked",
-    github: "github",
-    customColors: {
-      color1: "#667788",
-      color2: "#f47373",
-      color3: "#FABDAA",
-    },
-  };
+  const query = db.prepare("SELECT * FROM cards WHERE id = ?");
+  const data = query.get(req.params.id);
+  // const data = {
+  //   // photo: defaultImage,
+  //   palette: "1",
+  //   name: "Marina",
+  //   job: "domadora de unicornios",
+  //   email: "email",
+  //   phone: "phone",
+  //   linkedin: "linked",
+  //   github: "github",
+  //   customColors: {
+  //     color1: "#667788",
+  //     color2: "#f47373",
+  //     color3: "#FABDAA",
+  //   },
+
   res.render("pages/card", data);
-  // 
+  //
 });
 
 app.post("/card", (req, res) => {
@@ -74,27 +76,33 @@ app.post("/card", (req, res) => {
     response.error = "Campo obligatorio: photo";
   } else {
     response.success = true;
-    response.cardURL = "https://";
+
+    const query = db.prepare(
+      "INSERT INTO cards(palette, name, job, email, phone, linkedin, github, photo, color1, color2, color3) VALUES(?,?,?,?,?,?,?,?,?,?,?)"
+    );
+    const result = query.run(
+      req.body.palette,
+      req.body.name,
+      req.body.job,
+      req.body.email,
+      req.body.phone,
+      req.body.linkedin,
+      req.body.github,
+      req.body.customColors.color1,
+      req.body.customColors.color2,
+      req.body.customColors.color3
+    );
+
+    if (req.host === "localhost") {
+      response.cardURL = "http://localhost:3000/card/" + result.lastInsertRowid;
+    } else {
+      response.cardURL =
+        "https://dashboard.heroku.com/apps/awesome-profile-cards-team-7/card/" +
+        result.lastInsertRowid;
+    }
   }
 
-  // INSERT
-  // devolvemos success y la direccion
-  const query = db.prepare(
-    "INSERT INTO cards(palette, name, job, email, phone, linkedin, github, photo, color1, color2, color3) VALUES(?,?,?,?,?,?,?,?,?,?,?)"
-  );
-  const result = query.run(
-    req.body.palette,
-    req.body.name,
-    req.body.job,
-    req.body.email,
-    req.body.phone,
-    req.body.linkedin,
-    req.body.github,
-    req.body.customColors.color1,
-    req.body.customColors.color2,
-    req.body.customColors.color3
-  );
-  res.json(result);
+  res.json(response);
 });
 
 // error
