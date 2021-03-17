@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const Database = require('sqlite3');
-=======
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
->>>>>>> 3e901b141006c713eeaaaacf2d6259ae68e495fc
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" })); //No mover esta linea!! Error 413!! Alert! Alert!
