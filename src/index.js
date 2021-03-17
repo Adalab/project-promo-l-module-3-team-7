@@ -1,6 +1,7 @@
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const Database = require('sqlite3');
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" })); //No mover esta linea!! Error 413!! Alert! Alert!
@@ -15,10 +16,10 @@ app.set("view engine", "ejs");
 
 // static server
 const staticServerPath = "./public";
-app.use(express.static(__dirname + staticServerPath));
+app.use(express.static(staticServerPath));
 
 app.get("/card/:id/", (req, res) => {
-  console.log("Me estan llamando");
+  console.log("Me estan llamando" + req.params.id);
   const data = {
     // photo: defaultImage,
     palette: "1",
@@ -75,9 +76,25 @@ app.post("/card", (req, res) => {
     response.success = true;
     response.cardURL = "https://";
   }
-  res.json(response);
+
   // INSERT
   // devolvemos success y la direccion
+  const query = db.prepare(
+    "INSERT INTO cards(palette, name, job, email, phone, linkedin, github, photo, color1, color2, color3) VALUES(?,?,?,?,?,?,?,?,?,?,?)"
+  );
+  const result = query.run(
+    req.body.palette,
+    req.body.name,
+    req.body.job,
+    req.body.email,
+    req.body.phone,
+    req.body.linkedin,
+    req.body.github,
+    req.body.customColors.color1,
+    req.body.customColors.color2,
+    req.body.customColors.color3
+  );
+  res.json(result);
 });
 
 // error
