@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const Database = require("sqlite3");
+const Database = require("better-sqlite3");
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" })); //No mover esta linea!! Error 413!! Alert! Alert!
@@ -10,6 +10,7 @@ const serverPort = process.env.PORT || 3000;
 app.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
+const db = new Database("./src/data/cards.db");
 
 // set template engine middlewares
 app.set("view engine", "ejs");
@@ -19,7 +20,6 @@ const staticServerPath = "./public";
 app.use(express.static(staticServerPath));
 
 app.get("/card/:id/", (req, res) => {
-  console.log("Me estan llamando" + req.params.id);
   const query = db.prepare("SELECT * FROM cards WHERE id = ?");
   const data = query.get(req.params.id);
   // const data = {
@@ -36,13 +36,14 @@ app.get("/card/:id/", (req, res) => {
   //     color2: "#f47373",
   //     color3: "#FABDAA",
   //   },
-
-  res.render("pages/card", data);
-  //
+  if (data.palette === "4") {
+    res.render("pages/card-palette-4", data);
+  } else {
+    res.render("pages/card", data);
+  }
 });
 
 app.post("/card", (req, res) => {
-  console.log(req.body);
   const response = {};
   if (!req.body.name) {
     response.success = false;
@@ -64,10 +65,7 @@ app.post("/card", (req, res) => {
     response.error = "Campo obligatorio: github";
   } else if (
     !req.body.palette ||
-    req.body.palette !== "1" ||
-    req.body.palette !== "2" ||
-    req.body.palette !== "3" ||
-    req.body.palette !== "4"
+    !["1", "2", "3", "4"].includes(req.body.palette)
   ) {
     response.success = false;
     response.error = "Campo obligatorio: palette";
@@ -88,6 +86,7 @@ app.post("/card", (req, res) => {
       req.body.phone,
       req.body.linkedin,
       req.body.github,
+      req.body.photo,
       req.body.customColors.color1,
       req.body.customColors.color2,
       req.body.customColors.color3
