@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "build": "cd web && npm run build && cd .. && mv public/404* . && rm -rf public && mv web/build public && mv 404* public/."
+    "update-build": "cd web && npm run build && cd .. && mv public/404* . && rm -rf public && mv web/build public && mv 404* public/."
   },
   "author": "",
   "license": "ISC",
