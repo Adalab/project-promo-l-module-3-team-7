@@ -1,5 +1,5 @@
 import '../style/layout/Header.scss';
-import logo from '../images/logo-awesome-profile-cards.svg';
+import logo from '../images/new_logo.svg';
 import { Link } from 'react-router-dom';
 
 function Header() {

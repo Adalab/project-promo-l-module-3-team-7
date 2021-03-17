@@ -2,7 +2,7 @@ import '../style/layout/_landing-page.scss';
 import '../style/layout/Footer.scss';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
-import logo from '../images/logo-awesome-profile-cards.svg';
+import logo from '../images/new_logo.svg';
 
 function Landing() {
   return (
