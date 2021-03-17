@@ -96,7 +96,7 @@ app.post("/card", (req, res) => {
       response.cardURL = "http://localhost:3000/card/" + result.lastInsertRowid;
     } else {
       response.cardURL =
-        "https://dashboard.heroku.com/apps/awesome-profile-cards-team-7/card/" +
+        "https://awesome-profile-cards-team-7.herokuapp.com/card/" +
         result.lastInsertRowid;
     }
   }
