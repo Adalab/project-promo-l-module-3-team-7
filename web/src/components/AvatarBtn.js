@@ -1,5 +1,5 @@
 import "../style/layout/_form.scss";
-import defaultImage from "../images/lee.jpg"
+import defaultImage from "../images/profile_image.gif"
 import React, { useState } from "react";
 
 function AvatarBtn(props) {

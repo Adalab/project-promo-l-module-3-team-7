@@ -2,7 +2,7 @@
 import Form from "./Form";
 import Preview from "./Preview";
 import "../style/layout/_card-page.scss";
-import defaultImage from "../images/lee.jpg";
+import defaultImage from "../images/profile_image.gif";
 import React, { useEffect, useState } from "react";
 
 function Main() {

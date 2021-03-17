@@ -1,5 +1,5 @@
 import "../style/layout/Preview.scss";
-import defaultImage from "../images/lee.jpg";
+import defaultImage from "../images/profile_image.gif";
 import PropTypes from "prop-types";
 import Social from "./Social";
 
